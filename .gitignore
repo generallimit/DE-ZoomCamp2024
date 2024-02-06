@@ -116,6 +116,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+dev.env
 .env
 .venv
 .DS_Store
@@ -150,6 +151,7 @@ instance_metadata.json
 ~/.mage_data
 *.parquet
 *.parq
+*.pqt
 **ny_taxi_postgres_data/base/
 *.csv
 
