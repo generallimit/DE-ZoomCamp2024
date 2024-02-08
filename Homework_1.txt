@@ -1,0 +1,77 @@
+DE-ZoomCamp2024
+Homework 1
+
+---------------------------------------------------------------------------
+
+--Question. Docker tags
+--rm
+
+--Questions 2. Docker run: version of wheel
+--0.42.0
+
+--Question 3. Count records
+/*
+"count"
+15612
+*/
+SELECT COUNT(*)
+FROM public.green_taxi_data
+WHERE CAST(lpep_pickup_datetime AS DATE) >= '2019-09-18'
+AND CAST(lpep_dropoff_datetime AS DATE) <= '2019-09-18';
+
+
+--Question 4. Largest trip for each day
+/*
+"lpep_pickup_datetime"	"trip_distance"
+"2019-09-26"	341.64
+*/
+SELECT	cast(lpep_pickup_datetime as DATE)
+		,max(trip_distance) AS trip_distance
+FROM	green_taxi_data
+GROUP BY
+		trip_distance
+		,lpep_pickup_datetime
+ORDER BY
+		trip_distance DESC
+LIMIT 1;
+
+
+--Question 5. Three biggest pick up Boroughs
+/*
+"punum"	"Borough"
+154685	"Manhattan"
+135746	"Queens"
+124771	"Brooklyn"
+*/
+SELECT	COUNT(cast(g.lpep_pickup_datetime as DATE)) AS PUNum
+		,a."Borough"
+FROM	green_taxi_data g 
+INNER JOIN public.zones a ON g."PULocationID" = a."LocationID"
+WHERE a."Borough" <> 'Unknown'
+GROUP BY a."Borough"
+ORDER BY PUNum DESC
+LIMIT 3;
+
+
+--Question 6. Largest tip
+/*
+"date"	"date-2"	"Zone"	"tip_amount"
+"2019-09-08 18:10:40"	"2019-09-08 18:44:42"	"JFK Airport"	62.31
+*/
+SELECT	g.lpep_pickup_datetime AS DATE
+		,g.lpep_dropoff_datetime AS DATE
+		,c."Zone"
+		,g.tip_amount
+FROM	public.green_taxi_data g 
+INNER JOIN public.zones a ON g."PULocationID" = a."LocationID"
+INNER JOIN public.zones c ON g."DOLocationID" = c."LocationID" 
+WHERE EXTRACT(YEAR FROM g.lpep_pickup_datetime) = '2019'
+AND EXTRACT(MONTH FROM g.lpep_pickup_datetime) = '09'
+AND a."Zone" = 'Astoria'
+ORDER BY g.tip_amount DESC
+LIMIT 1;
+
+--Question 7. terraform apply
+terraform apply creates resources (in this case Google Cloud Storage and BigQuery dataset) based on a configuration file.
+
+---------------------------------------------------------------------------
