@@ -7,7 +7,7 @@ authentication.js
 node_modules
 notes/
 **/*-todo.md
-*.yml
+# *.yml
 *log*
 notes.txt
 
