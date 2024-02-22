@@ -4,21 +4,21 @@ sources:
   - name: staging
     # for BigQuery
     database: astute-impulse-412600
-    schema: ny_taxi
+    schema: trips_data_all
      # For postgres:
       # database: ny_taxi
       # schema: dbt_NY_Taxi
 
       # loaded_at_field: record_loaded_at
     tables:
-      - name: green_taxi_data
-      - name: yellow_taxi_data
+      - name: green_tripdata
+      - name: yellow_tripdata
          # freshness:
            # error_after: {count: 6, period: hour}
 
 
 models:
-  - name: stg_green_taxi_data
+  - name: stg_green_tripdata
     description: ""
     columns:
       - name: tripid
@@ -126,7 +126,7 @@ models:
         data_type: string
         description: ""
 
-  - name: stg_yellow_taxi_data
+  - name: stg_yellow_tripdata
     description: ""
     columns:
       - name: tripid
