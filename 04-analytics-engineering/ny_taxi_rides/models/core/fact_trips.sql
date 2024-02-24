@@ -15,9 +15,9 @@ yellow_taxi_data as (
     from {{ ref('stg_yellow_tripdata') }}
 ),
 trips_unioned as (
-    select * from green_tripdata
+    select * from green_taxi_data
     union all
-    select * from yellow_tripdata
+    select * from yellow_taxi_data
 ),
 dim_zones as (
     select * from {{ ref('dim_zones') }}
