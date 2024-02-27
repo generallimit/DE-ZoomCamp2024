@@ -3,7 +3,7 @@ services:
     image: postgres:13.13-bullseye
     environment:
       - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=
+      - POSTGRES_PASSWORD=root
       - POSTGRES_DB=ny_taxi
     volumes:
       - "C:/Users/jeff/OneDrive/Documents/Projects/Learning/ZoomCamp2024/ny_taxi_postgres_data:/var/lib/postgresql/data:rw"
@@ -12,7 +12,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     environment:
-      - PGADMIN_DEFAULT_EMAIL=
+      - PGADMIN_DEFAULT_EMAIL=patton.jeffery@gmail.com
       - PGADMIN_DEFAULT_PASSWORD=root
     ports:
       - "8080:80"
