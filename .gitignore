@@ -7,7 +7,7 @@ authentication.js
 node_modules
 notes/
 **/*-todo.md
-*.yml
+# *.yml
 *log*
 notes.txt
 
@@ -152,7 +152,7 @@ instance_metadata.json
 *.parq
 *.pqt
 **ny_taxi_postgres_data/base/
-*.csv
+# *.csv
 
 # test notebook
 test.ipynb
