@@ -12,7 +12,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     environment:
-      - PGADMIN_DEFAULT_EMAIL=patton.jeffery@gmail.com
+      - PGADMIN_DEFAULT_EMAIL=xxxx
       - PGADMIN_DEFAULT_PASSWORD=root
     ports:
       - "8080:80"
